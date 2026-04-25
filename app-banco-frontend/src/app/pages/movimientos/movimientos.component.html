@@ -1,0 +1,100 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Movimientos</h1>
+    <p class="page-subtitle">Administra y gestiona los movimientos</p>
+  </div>
+  <div class="main-card">
+    <div class="filter-section">
+      <div class="filter-row"><input class="text-input filter-field" [formControl]="searchControl"
+          placeholder="Buscar..."><button class="btn primary" (click)="openSaveInfoMovimiento()">Nuevo</button></div>
+    </div>
+    <div class="table-wrapper">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Número Cuenta</th>
+            <th>Tipo</th>
+            <th>Saldo Inicial</th>
+            <th>Estado</th>
+            <th>Movimiento</th>
+            <th>Saldo Actual</th>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataVigente">
+            <td>{{row.numeroCuenta}}</td>
+            <td>{{row.tipoCuentaNombre}}</td>
+            <td>{{row.saldoInicial}}</td>
+            <td>{{row.estado}}</td>
+            <td>{{row.movimiento}}</td>
+            <td>{{row.saldoActual}}</td>
+            <td>{{row.identificacion}}</td>
+            <td>{{row.nombre}}</td>
+            <td>{{row.apellido}}</td>
+            <td>
+              <button class="icon-btn" (click)="openRetrieveInfoMovimiento(row)">Info</button>
+              <button class="icon-btn" *ngIf="row.editable && row.estado === 'ACTIVO'"
+                (click)="openUpdateInfoMovimiento(row.idMovimiento)">Editar</button>
+              <button class="icon-btn danger" *ngIf="row.editable && row.estado === 'ACTIVO'"
+                (click)="deleteInfoMovimiento(row.idMovimiento)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="empty-state" *ngIf="dataVigente.length===0">
+      <p>No existen datos</p>
+    </div>
+    <div class="paginator"><button class="btn" [disabled]="pageNumberVigente===0"
+        (click)="handlePageVigente(pageNumberVigente-1)">Anterior</button><span>Pagina {{pageNumberVigente +
+        1}} de {{totalPagesVigente}}</span><button class="btn"
+        [disabled]="(pageNumberVigente + 1) * pageSizeVigente >= totalVigente"
+        (click)="handlePageVigente(pageNumberVigente+1)">Siguiente</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showSaveModal || showUpdateModal">
+  <div class="modal">
+    <h3>{{showSaveModal ? 'Guardar movimiento' : 'Actualizar movimiento'}}</h3>
+    <div class="filter-row-buscar" *ngIf="showSaveModal">
+      <input class="text-input filter-field" [(ngModel)]="filtroNumeroCuenta" placeholder="Buscar numero de cuenta">
+      <button class="btn" (click)="buscarCuenta()">Buscar cuenta</button>
+    </div>
+    <div class="form-grid">
+      <select class="text-input" [disabled]="showUpdateModal"
+        [(ngModel)]="(showSaveModal ? saveMovimiento : updateMovimiento).numeroCuenta">
+        <option value="">Seleccione cuenta</option>
+        <option *ngFor="let c of cuentas" [value]="c.numeroCuenta">{{c.numeroCuenta}} - {{c.nombre}} {{c.apellido}}
+        </option>
+      </select>
+      <select class="text-input" [(ngModel)]="(showSaveModal ? saveMovimiento : updateMovimiento).tipoMovimientoId">
+        <option [value]="0">Seleccione tipo movimiento</option>
+        <option *ngFor="let t of tiposMovimiento" [value]="t.idTipoMovimiento">{{t.nombreMovimiento}}</option>
+      </select>
+      <input class="text-input" type="number" [(ngModel)]="(showSaveModal ? saveMovimiento : updateMovimiento).valor"
+        placeholder="Valor del movimiento">
+    </div>
+    <div class="modal-actions"><button class="btn primary"
+        (click)="showSaveModal ? submitSave() : submitUpdate()">{{showSaveModal ? 'Guardar' :
+        'Actualizar'}}</button><button class="btn"
+        (click)="showSaveModal=false; showUpdateModal=false; limpiar()">Cancelar</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDetailModal">
+  <div class="modal">
+    <h3>Detalle movimiento</h3>
+    <p><strong>Cuenta:</strong> {{detail?.numeroCuenta}}</p>
+    <p><strong>Tipo de cuenta:</strong> {{detail?.tipoCuentaNombre}}</p>
+    <p><strong>Movimiento:</strong> {{detail?.movimiento}}</p>
+    <p><strong>Saldo Actual:</strong> {{detail?.saldoActual}}</p>
+    <p><strong>Cliente:</strong> {{detail?.nombre}} {{detail?.apellido}}</p>
+    <p><strong>Identificación:</strong> {{detail?.identificacion}}</p>
+    <p><strong>Estado:</strong> {{detail?.estado}}</p>
+    <div class="modal-actions"><button class="btn" (click)="showDetailModal=false">Cerrar</button></div>
+  </div>
+</div>

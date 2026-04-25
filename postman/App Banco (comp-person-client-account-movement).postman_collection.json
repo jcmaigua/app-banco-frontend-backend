@@ -1,0 +1,1091 @@
+{
+  "info": {
+    "_postman_id": "efeee7ac-6e2c-47a9-8c9c-9b1a5ba39309",
+    "name": "App Banco (comp-person-client-account-movement)",
+    "description": "REST del composite mediante puerto 1601. Variable `baseUrl` (ej. http://localhost:1601). Rutas alineadas con PersonClientController, AccountController, MovementController y ReportesRestController.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "25418258"
+  },
+  "item": [
+    {
+      "name": "Clientes",
+      "item": [
+        {
+          "name": "InfoPersona - saveInfoPersona 1 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"nombre\": \"Jose\",\n    \"apellido\": \"Lema\",\n    \"genero\": \"Masculino\",\n    \"edad\": 27,\n    \"identificacion\": \"0550458682\",\n    \"direccion\": \"Otavalo sn y principal\",\n    \"telefono\": \"098254785\",\n    \"contrasena\": \"1234\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/saveInfoPersona",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "saveInfoPersona"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - saveInfoPersona 2 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"nombre\": \"Mariela\",\n    \"apellido\": \"Montalvo\",\n    \"genero\": \"Femenino\",\n    \"edad\": 40,\n    \"identificacion\": \"0550458683\",\n    \"direccion\": \"Amazonas y NNUU\",\n    \"telefono\": \"097548965\",\n    \"contrasena\": \"5678\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/saveInfoPersona",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "saveInfoPersona"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - saveInfoPersona 3 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Osorio\",\n    \"genero\": \"Masculino\",\n    \"edad\": 30,\n    \"identificacion\": \"0550458688\",\n    \"direccion\": \"13 junio y Equinoccia\",\n    \"telefono\": \"098874587\",\n    \"contrasena\": \"1245\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/saveInfoPersona",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "saveInfoPersona"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - updateInfoPersona (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"idPersona\": 1,\n    \"idCliente\": 1,\n    \"nombre\": \"Jose\",\n    \"apellido\": \"Lema\",\n    \"genero\": \"Masculino\",\n    \"edad\": 21,\n    \"identificacion\": \"0550458682\",\n    \"direccion\": \"Otavalo sn y principal\",\n    \"telefono\": \"098254785\",\n    \"contrasena\": \"nuevo1234\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/updateInfoPersona",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "updateInfoPersona"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - updateInfoPersona (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"contrasena\": \"nuevoSecretsa\"\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/updateContrasenia/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "updateContrasenia",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - retrieveInfoCliente (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/retrieveInfoCliente/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "retrieveInfoCliente",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - deleteInfoCliente (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/deleteInfoCliente/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "deleteInfoCliente",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - listByInfoCliente (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/listByInfoCliente?estado=ACTIVO",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "listByInfoCliente"
+              ],
+              "query": [
+                {
+                  "key": "idCliente",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "nombre",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "apellido",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "identificacion",
+                  "value": "0550458682",
+                  "disabled": true
+                },
+                {
+                  "key": "direccion",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "telefono",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "idPersona",
+                  "value": "4",
+                  "disabled": true
+                },
+                {
+                  "key": "estado",
+                  "value": "ACTIVO"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoPersona - pageListByInfoCliente (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"page\": 0,\n    \"size\": 10,\n    \"tabla\": {\n      \"valor\": \"jose\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/clientes/pageListByInfoCliente",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "clientes",
+                "pageListByInfoCliente"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cuentas",
+      "item": [
+        {
+          "name": "Tipo Cuentas",
+          "item": [
+            {
+              "name": "AdmiTipoCuenta - pageListByAdmiTipoCuenta (POST)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"page\": 0,\n    \"size\": 10,\n    \"tabla\": {\n      \"estado\": \"ACTIVO\"\n    }\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/cuentas/pageListByAdmiTipoCuenta",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "pageListByAdmiTipoCuenta"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "AdmiTipoCuenta - listByAdmiTipoCuenta (GET)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/cuentas/listByAdmiTipoCuenta?estado=ACTIVO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "cuentas",
+                    "listByAdmiTipoCuenta"
+                  ],
+                  "query": [
+                    {
+                      "key": "idTipoCuenta",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "nombreCuenta",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "descripcion",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "estado",
+                      "value": "ACTIVO"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "InfoCuenta - saveInfoCuenta 1 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"478758\",\n    \"tipoCuentaId\":1, // 1 ahorro - 2 corriente\n    \"personaId\": 1,\n    \"saldoInicial\": 2000\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/saveInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "saveInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - saveInfoCuenta 2 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"225487\",\n    \"tipoCuentaId\":2, // 1 ahorro - 2 corriente\n    \"personaId\": 2,\n    \"saldoInicial\": 100\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/saveInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "saveInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - saveInfoCuenta 3 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"495878\",\n    \"tipoCuentaId\":1, // 1 ahorro - 2 corriente\n    \"personaId\": 3,\n    \"saldoInicial\": 0\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/saveInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "saveInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - saveInfoCuenta 4 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"496825\",\n    \"tipoCuentaId\":1, // 1 ahorro - 2 corriente\n    \"personaId\": 2,\n    \"saldoInicial\": 540\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/saveInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "saveInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - saveInfoCuenta 5 (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"585545\",\n    \"tipoCuentaId\":2, // 1 ahorro - 2 corriente\n    \"personaId\": 1,\n    \"saldoInicial\": 1000\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/saveInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "saveInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - updateInfoCuenta (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n        \"idCuenta\": 1,\n        \"numeroCuenta\": \"478758\",\n        \"tipoCuentaId\":1, // 1 ahorro - 2 corriente\n        \"personaId\": 1,\n        \"saldoInicial\": 10000\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/updateInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "updateInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - retrieveInfoCuenta (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/retrieveInfoCuenta/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "retrieveInfoCuenta",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - deleteInfoCuenta (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/deleteInfoCuenta/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "deleteInfoCuenta",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - listByInfoCuenta (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/listByInfoCuenta?estado=ACTIVO",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "listByInfoCuenta"
+              ],
+              "query": [
+                {
+                  "key": "numeroCuenta",
+                  "value": "478758",
+                  "disabled": true
+                },
+                {
+                  "key": "tipoCuentaId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "idCuenta",
+                  "value": "3",
+                  "disabled": true
+                },
+                {
+                  "key": "estado",
+                  "value": "ACTIVO"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoCuenta - pageListByInfoCuenta (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"page\": 0,\n    \"size\": 10,\n    \"tabla\": {\n      \"valor\": \"ahorros\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/cuentas/pageListByInfoCuenta",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "cuentas",
+                "pageListByInfoCuenta"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Movimientos",
+      "item": [
+        {
+          "name": "Tipo Movimiento",
+          "item": [
+            {
+              "name": "AdmiTipoMovimiento - pageListByAdmiTipoMovimiento (POST)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"page\": 0,\n    \"size\": 10,\n    \"tabla\": {\n      \"estado\": \"ACTIVO\"\n    }\n  }\n}"
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/movimientos/pageListByAdmiTipoMovimiento",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "movimientos",
+                    "pageListByAdmiTipoMovimiento"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "AdmiTipoMovimiento - listByAdmiTipoMovimiento (GET)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/api/movimientos/listByAdmiTipoMovimiento?estado=ACTIVO",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "movimientos",
+                    "listByAdmiTipoMovimiento"
+                  ],
+                  "query": [
+                    {
+                      "key": "idTipoMovimiento",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "nombreMovimiento",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "descripcion",
+                      "value": "",
+                      "disabled": true
+                    },
+                    {
+                      "key": "estado",
+                      "value": "ACTIVO"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "InfoMovimiento - 1 saveInfoMovimiento (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"478758\",\n    \"tipoMovimientoId\": 2, // 1 deposito - 2 retiro\n    \"valor\":575\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/saveInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "saveInfoMovimiento"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - 2 saveInfoMovimiento (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"225487\",\n    \"tipoMovimientoId\": 1, // 1 deposito - 2 retiro\n    \"valor\":600\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/saveInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "saveInfoMovimiento"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - 3 saveInfoMovimiento (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"495878\",\n    \"tipoMovimientoId\": 1, // 1 deposito - 2 retiro\n    \"valor\":150\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/saveInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "saveInfoMovimiento"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - 4 saveInfoMovimiento (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"numeroCuenta\": \"496825\",\n    \"tipoMovimientoId\": 2, // 1 deposito - 2 retiro\n    \"valor\":540\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/saveInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "saveInfoMovimiento"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - updateInfoMovimiento (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n        \"idMovimiento\": 2,\n        \"numeroCuenta\": \"225487\",\n        \"tipoMovimientoId\": 1,\n        \"valor\": 400\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/updateInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "updateInfoMovimiento"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Infomovimiento - deleteInfoMovimiento (DELETE)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/deleteInfoMovimiento/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "deleteInfoMovimiento",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - retrieveInfoMovimiento (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/retrieveInfoMovimiento/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "retrieveInfoMovimiento",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - listByInfoMovimiento (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/listByInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "listByInfoMovimiento"
+              ],
+              "query": [
+                {
+                  "key": "idMovimiento",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "numeroCuenta",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "tipoMovimientoId",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "cuentaId",
+                  "value": "4",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InfoMovimiento - pageListByInfoMovimiento (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userRequest\": \"Juan Maigua\",\n  \"payload\": {\n    \"page\": 0,\n    \"size\": 10,\n    \"tabla\": {\n        \"valor\": \"ACTIVO\"\n    }\n  }\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/movimientos/pageListByInfoMovimiento",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "movimientos",
+                "pageListByInfoMovimiento"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reportes",
+      "item": [
+        {
+          "name": "Estado de cuenta (GET /reportes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reportes?fechaDesde=2026-04-24&fechaHasta=2027-04-24&identificacion=0550458682",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reportes"
+              ],
+              "query": [
+                {
+                  "key": "fechaDesde",
+                  "value": "2026-04-24"
+                },
+                {
+                  "key": "fechaHasta",
+                  "value": "2027-04-24"
+                },
+                {
+                  "key": "identificacion",
+                  "value": "0550458682"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Estado de cuenta page(GET /reportes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reportes/page?fechaDesde=2026-04-21&fechaHasta=2027-04-26&identificacion=juan&page=0&size=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "page"
+              ],
+              "query": [
+                {
+                  "key": "fechaDesde",
+                  "value": "2026-04-21"
+                },
+                {
+                  "key": "fechaHasta",
+                  "value": "2027-04-26"
+                },
+                {
+                  "key": "identificacion",
+                  "value": "juan"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Estado de cuenta pagePDF(GET /reportes)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/reportes/pagePdf?fechaDesde=2025-04-15&fechaHasta=2027-04-15&identificacion=0550458682&page=0&size=10",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "reportes",
+                "pagePdf"
+              ],
+              "query": [
+                {
+                  "key": "fechaDesde",
+                  "value": "2025-04-15"
+                },
+                {
+                  "key": "fechaHasta",
+                  "value": "2027-04-15"
+                },
+                {
+                  "key": "identificacion",
+                  "value": "0550458682"
+                },
+                {
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "key": "size",
+                  "value": "10"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:1601"
+    }
+  ]
+}

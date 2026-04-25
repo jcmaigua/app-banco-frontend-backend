@@ -1,0 +1,7 @@
+aplicacion.nombre=comp-person-client-account-movement
+server.port=${port:8082}
+path.webservice=api
+
+grpc.client.timeout.idle=5
+grpc.client.timeout.deadline-after=60
+grpc.client-server.map={'person-client-account-movement':'dns:///localhost:9090'}

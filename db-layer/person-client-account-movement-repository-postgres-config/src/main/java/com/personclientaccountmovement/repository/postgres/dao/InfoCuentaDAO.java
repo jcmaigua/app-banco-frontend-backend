@@ -1,0 +1,24 @@
+package com.personclientaccountmovement.repository.postgres.dao;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+import com.personclientaccountmovement.repository.postgres.entity.InfoCuenta;
+
+/**
+* Repositorio INFO_CUENTA
+* 
+* @author Juan Maigua <mailto:maiguarizocarlos@gmail.com>
+* @version 1.0 - Version Inicial
+* @since 15/04/2026
+*/
+@Repository
+public interface InfoCuentaDAO extends JpaRepository<InfoCuenta, Long>, JpaSpecificationExecutor<InfoCuenta> {
+    List<InfoCuenta> findByNumeroCuentaAndEstado (String numCuenta, String estado);
+    List<InfoCuenta> findByNumeroCuenta (String numCuenta);
+    List<InfoCuenta> findByIdCuentaAndEstado (Long idCuenta, String estado);
+    List<InfoCuenta> findByPersonaIdAndEstado (Long personaId, String estado);
+}

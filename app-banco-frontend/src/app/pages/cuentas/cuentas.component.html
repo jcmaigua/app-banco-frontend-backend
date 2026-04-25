@@ -1,0 +1,100 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Cuentas</h1>
+    <p class="page-subtitle">Administra y gestiona las cuentas</p>
+  </div>
+  <div class="main-card">
+    <div class="filter-section">
+      <div class="filter-row"><input class="text-input filter-field" [formControl]="searchControl"
+          placeholder="Buscar..."><button class="btn primary" (click)="openSaveInfoCuenta()">Nuevo</button></div>
+    </div>
+    <div class="table-wrapper">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Número Cuenta</th>
+            <th>Tipo</th>
+            <th>Saldo Inicial</th>
+            <th>Estado</th>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataVigente">
+            <td>{{row.numeroCuenta}}</td>
+            <td>{{row.nombreTipoCuenta}}</td>
+            <td>{{row.saldoInicial}}</td>
+            <td>{{row.estado}}</td>
+            <td>{{row.identificacion}}</td>
+            <td>{{row.nombre}}</td>
+            <td>{{row.apellido}}</td>
+            <td>
+              <button class="icon-btn" (click)="openRetrieveInfoCuenta(row)">Info</button>
+              <button class="icon-btn" *ngIf="row.estado === 'ACTIVO'"
+                (click)="openUpdateInfoCuenta(row.idCuenta)">Editar</button>
+              <button class="icon-btn danger" *ngIf="row.estado === 'ACTIVO'"
+                (click)="deleteInfoCuenta(row.idCuenta)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="empty-state" *ngIf="dataVigente.length===0">
+      <p>No existen datos</p>
+    </div>
+    <div class="paginator">
+      <button class="btn" [disabled]="pageNumberVigente===0"
+        (click)="handlePageVigente(pageNumberVigente-1)">Anterior</button><span>Pagina {{pageNumberVigente +
+        1}} de {{totalPagesVigente}}</span><button class="btn"
+        [disabled]="(pageNumberVigente + 1) * pageSizeVigente >= totalVigente"
+        (click)="handlePageVigente(pageNumberVigente+1)">Siguiente</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showSaveModal || showUpdateModal">
+  <div class="modal">
+    <h3>{{showSaveModal ? 'Guardar cuenta' : 'Actualizar cuenta'}}</h3>
+    <div class="filter-row-buscar">
+      <input class="text-input filter-field" [(ngModel)]="filtroIdentificacion" placeholder="Buscar identificación">
+      <button class="btn" (click)="buscarPersona()">Buscar cliente</button>
+    </div>
+    <div class="form-grid">
+      <select class="text-input" [(ngModel)]="(showSaveModal ? saveCuenta : updateCuenta).personaId">
+        <option [value]="0">Seleccione cliente</option>
+        <option *ngFor="let u of usuarios" [value]="u.idPersona">{{u.identificacion}} - {{u.nombre}} {{u.apellido}}
+        </option>
+      </select>
+      <select class="text-input" [(ngModel)]="(showSaveModal ? saveCuenta : updateCuenta).tipoCuentaId">
+        <option [value]="0">Seleccione tipo cuenta</option>
+        <option *ngFor="let t of tiposCuenta" [value]="t.idTipoCuenta">{{t.nombreCuenta}}</option>
+      </select>
+      <input class="text-input" [(ngModel)]="(showSaveModal ? saveCuenta : updateCuenta).numeroCuenta"
+        placeholder="Número cuenta">
+      <input class="text-input" type="number" placeholder="Saldo Inicial"
+        [(ngModel)]="(showSaveModal ? saveCuenta : updateCuenta).saldoInicial" placeholder="Saldo inicial">
+    </div>
+    <div class="modal-actions"><button class="btn primary"
+        (click)="showSaveModal ? submitSave() : submitUpdate() ">{{showSaveModal ? 'Guardar' :
+        'Actualizar'}}</button><button class="btn"
+        (click)="showSaveModal=false; showUpdateModal=false; limpiar()">Cancelar</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDetailModal">
+  <div class="modal">
+    <h3>Detalle cuenta</h3>
+    <p><strong>Número:</strong> {{detail?.numeroCuenta}}</p>
+
+    <p><strong>Tipo:</strong> {{detail?.nombreTipoCuenta}}</p>
+    <p><strong>Saldo:</strong> {{detail?.saldoInicial}}</p>
+    <p><strong>Saldo Actual:</strong> {{detail?.saldoActual}}</p>
+    <p><strong>Cliente:</strong> {{detail?.nombre}} {{detail?.apellido}}</p>
+    <p><strong>Identificación:</strong> {{detail?.identificacion}}</p>
+    <p><strong>Estado:</strong> {{detail?.estado}}</p>
+    <div class="modal-actions"><button class="btn" (click)="showDetailModal=false">Cerrar</button></div>
+  </div>
+</div>

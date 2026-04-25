@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package resource.integration.grpc;
+
+option java_multiple_files = true;
+option java_package = "com.personclientaccountmovement.integration.grpc.gen";
+option java_outer_classname = "GrpcGenericProto";
+
+service GrpcGenericService {
+  rpc GetGenericData (GrpcGenericRequest) returns (GrpcGenericResponse);
+}
+
+message GrpcGenericRequest {
+  string method = 1;
+  string transaction_id = 2;
+  string payload_json = 3;
+  string user_request = 4;
+}
+
+message GrpcGenericResponse {
+  string payload_json = 1;
+  string error_message = 2;
+  int32 code = 3;
+}

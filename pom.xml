@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.personclientaccountmovement</groupId>
+	<artifactId>banco-app-parent</artifactId>
+	<version>2.0.2-RELEASE</version>
+	<packaging>pom</packaging>
+	<name>banco-app-parent</name>
+	<description>Orden de compilación para Docker y CI</description>
+	<modules>
+		<module>dependecy/person-client-account-movement-dependency</module>
+		<module>db-layer/person-client-account-movement-repository-postgres-config</module>
+		<module>core-layer/core-person-client-account-movement</module>
+		<module>composite-layer/comp-person-client-account-movement</module>
+	</modules>
+</project>

@@ -1,0 +1,78 @@
+<div class="page-container">
+  <div class="page-header">
+    <h1 class="page-title">Reportes</h1>
+    <p class="page-subtitle">Administra y gestiona los reportes</p>
+  </div>
+  <div class="main-card">
+    <div class="filter-section">
+      <div class="filter-row">
+        <span class="filter-label">Desde:</span>
+        <input class="text-input" type="date" [(ngModel)]="fechaInicio">
+        <span class="filter-label">Hasta:</span>
+        <input class="text-input" type="date" [(ngModel)]="fechaFin">
+        <input class="text-input filter-field" type="text" [(ngModel)]="searchIdentificacion" placeholder="Cliente">
+        <button class="btn primary" (click)="buscar()">Buscar...</button>
+        <button class="btn" (click)="resetear()">Limpiar...</button>
+        <button class="btn primary" (click)="reportePdf()">Reporte</button>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table class="modern-table">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Número Cuenta</th>
+            <th>Tipo</th>
+            <th>Saldo Inicial</th>
+            <th>Estado</th>
+            <th>Movimiento</th>
+            <th>Saldo Disponible</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of dataVigente">
+            <td>{{row.fecha}}</td>
+            <td>{{row.identificacion}}</td>
+            <td>{{row.nombre}}</td>
+            <td>{{row.apellido}}</td>
+            <td>{{row.numeroCuenta}}</td>
+            <td>{{row.tipoCuentaNombre}}</td>
+            <td>{{row.saldoInicial}}</td>
+            <td>{{row.estado}}</td>
+            <td>{{row.movimiento}}</td>
+            <td>{{row.saldoDisponible}}</td>
+            <td><button class="icon-btn" (click)="openRetrieveInfoReporte(row)">Info</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="empty-state" *ngIf="dataVigente.length===0">
+      <p>No existen datos</p>
+    </div>
+    <div class="paginator"><button class="btn" [disabled]="pageNumberVigente===0"
+        (click)="handlePageVigente(pageNumberVigente-1)">Anterior</button><span>Pagina {{pageNumberVigente +
+        1}} de {{totalPagesVigente}}</span><button class="btn"
+        [disabled]="(pageNumberVigente + 1) * pageSizeVigente >= totalVigente"
+        (click)="handlePageVigente(pageNumberVigente+1)">Siguiente</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showDetailModal">
+  <div class="modal">
+    <h3>Detalle del reporte</h3>
+    <p><strong>Fecha:</strong> {{detail?.fecha}}</p>
+    <p><strong>Identificación:</strong> {{detail?.identificacion}}</p>
+    <p><strong>Cliente:</strong> {{detail?.nombre}} {{detail?.apellido}}</p>
+    <p><strong>Cuenta:</strong> {{detail?.numeroCuenta}}</p>
+    <p><strong>Tipo de cuenta:</strong> {{detail?.tipoCuentaNombre}}</p>
+    <p><strong>Saldo inicial:</strong> {{detail?.saldoInicial}}</p>
+    <p><strong>Movimiento:</strong> {{detail?.movimiento}}</p>
+    <p><strong>Saldo disponible:</strong> {{detail?.saldoDisponible}}</p>
+    <p><strong>Estado:</strong> {{detail?.estado}}</p>
+    <div class="modal-actions"><button class="btn" (click)="showDetailModal=false">Cerrar</button></div>
+  </div>
+</div>

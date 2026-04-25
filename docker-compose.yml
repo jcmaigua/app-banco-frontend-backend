@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: ${POSTGRES_IMAGE}
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./BaseDatos.sql:/docker-entrypoint-initdb.d/01-BaseDatos.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+
+  core-person-client-account-movement:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        MODULE_PATH: core-layer/core-person-client-account-movement
+        JAR_FILE: ${CORE_PERSON_ACCOUNT_MOVEMENT_CLIENT_JAR}
+    ports:
+      - "${CORE_PERSON_CLIENT_ACCOUNT_MOVEMENT_HTTP_PORT}:1602"
+      - "${CORE_PERSON_CLIENT_ACCOUNT_MOVEMENT_GRPC_PORT}:9090"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    
+  composite:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        MODULE_PATH: composite-layer/comp-person-client-account-movement
+        JAR_FILE: ${COMPOSITE_JAR}
+    ports:
+      - "${COMPOSITE_HTTP_PORT}:1601"
+    depends_on:
+      core-person-client-account-movement:
+        condition: service_started
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./app-banco-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "${FRONTEND_PORT}:80"
+    depends_on:
+      composite:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
